@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HỆ THỐNG PHỤC VỤ DẠY HỌC — Lương Khánh Tường</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+
+<div id="gate">
+  <div class="gate-box">
+    <div class="crest">Trường học số</div>
+    <div class="gate-title">HỆ THỐNG PHỤC VỤ DẠY HỌC</div>
+    <div class="gate-sub">Tác giả: Lương Khánh Tường · ĐT/Zalo: 0916780807</div>
+
+    <div class="tabs">
+      <button id="tabT" class="on" onclick="Gate.tab('gv')">Giáo viên / Quản trị</button>
+      <button id="tabS" onclick="Gate.tab('hs')">Học sinh</button>
+    </div>
+
+    <div id="paneGV">
+      <button class="btn block" onclick="Auth.google()">Đăng nhập bằng Gmail</button>
+      <div class="sep"></div>
+      <div class="field">
+        <label>Hoặc dùng chế độ ngoại tuyến (chưa cấu hình Firebase)</label>
+        <input id="gvMail" placeholder="nhap.email@gmail.com">
+      </div>
+      <div class="row">
+        <button class="btn ghost" onclick="Auth.local('teacher')">Vào với vai trò giáo viên</button>
+        <button class="btn teal" onclick="Auth.local('admin')">Vào với vai trò quản trị</button>
+      </div>
+    </div>
+
+    <div id="paneHS" class="hidden">
+      <div class="field"><label>Mã lớp giáo viên cấp</label><input id="hsClass" placeholder="VD: 12A1-2026"></div>
+      <div class="field"><label>Họ tên hoặc mã học sinh</label><input id="hsName" placeholder="Nguyễn Văn A"></div>
+      <button class="btn block teal" onclick="Auth.student()">Vào lớp học</button>
+      <div class="sep"></div>
+      <button class="btn ghost block" onclick="Auth.google('student')">Học sinh đăng nhập bằng Gmail</button>
+    </div>
+
+    <div class="gfoot">Dữ liệu lưu trên máy khi chạy ngoại tuyến, hoặc đồng bộ qua Firebase khi đã cấu hình.</div>
+  </div>
+</div>
+
+<div id="app">
+  <div class="shell">
+    <aside class="side" id="side">
+      <div class="brandline">HỆ THỐNG PHỤC VỤ DẠY HỌC</div>
+      <div class="author">Lương Khánh Tường</div>
+      <div id="navBox"></div>
+      <div style="flex:1"></div>
+      <button class="nav" onclick="Auth.logout()">Đăng xuất</button>
+    </aside>
+    <div class="main">
+      <div class="top">
+        <button class="burger" onclick="document.getElementById('side').classList.toggle('open')">☰</button>
+        <div id="topTitle" style="font-weight:600"></div>
+        <div class="who" id="who"></div>
+      </div>
+      <div id="view"></div>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/theory.js"></script>
+<script src="js/import.js"></script>
+</body>
+</html>
